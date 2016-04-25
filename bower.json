@@ -1,0 +1,17 @@
+{
+  "name": "mr-utils",
+  "authors": [
+    "Виталий Кулешин <antivitla@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
