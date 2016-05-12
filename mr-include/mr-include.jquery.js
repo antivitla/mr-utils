@@ -15,12 +15,6 @@
 		// track nested includes
 		if ($item.data("mr-include").includes < 1) {
 			$item.trigger(jQuery.Event("mr-include-complete"));
-			if ($item.data("mr-include").parent) {
-				$item.data("mr-include").parent.data("mr-include").includes -= 1;
-				if ($item.data("mr-include").parent.data("mr-include").includes < 1) {
-					$item.data("mr-include").parent.trigger(jQuery.Event("mr-include-complete"));
-				}
-			}
 		}
 	}
 
@@ -46,5 +40,17 @@
 
 	$(document).on("mr-include", function (event) {
 		init($(event.target));
+	});
+
+	$(document).on("mr-include-complete", function (event) {
+		var $item = $(event.target);
+		if ($item.data("mr-include").parent) {
+			$item.data("mr-include").parent.data("mr-include").includes -= 1;
+			if ($item.data("mr-include").parent.data("mr-include").includes < 1) {
+				setTimeout(function () {
+					$item.data("mr-include").parent.trigger(jQuery.Event("mr-include-complete"));
+				},1);
+			}
+		}
 	});
 }(jQuery));
