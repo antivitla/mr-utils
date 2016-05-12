@@ -23,7 +23,7 @@ var mr = mr || {
 					});
 				});
 
-				$(document).on("mr.include", function (event) {
+				$(document).on("mr-include-complete", function (event) {
 					$(event.target).find(selector).addBack(selector).each(function () {
 						callback($(this))
 					});

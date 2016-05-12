@@ -1,8 +1,12 @@
 
-//
-// Mr. Include
-//
+/*
 
+	Инклюд с заменой
+
+	Зависит от
+		- mr.component
+
+*/
 
 (function () {
 	mr.component("mr-include[src]").init(function (element) {
