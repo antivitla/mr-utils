@@ -19,13 +19,19 @@ var mr = mr || {
 			init: function (callback) {
 				$(document).on("ready", function () {
 					$(document).find(selector).each(function () {
-						callback($(this));
+						if (!$(this).get(0).mrComponentReady) {
+							callback($(this));
+							$(this).get(0).mrComponentReady = true;
+						}
 					});
 				});
 
 				$(document).on("mr-include-complete", function (event) {
 					$(event.target).find(selector).addBack(selector).each(function () {
-						callback($(this))
+						if (!$(this).get(0).mrComponentReady) {
+							callback($(this));
+							$(this).get(0).mrComponentReady = true;
+						}
 					});
 				});
 			}
