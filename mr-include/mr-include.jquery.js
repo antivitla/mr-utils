@@ -25,13 +25,21 @@
 			src: function (url, $parent) {
 				$.get(url, function (html) {
 					var template = $(html).filter("*");
-					$placeholder.replaceWith(template);
-					template.each(function () {
-						$(this).data("mr-include", jQuery.extend($(this).data("mr-include") || {}, {
-							parent: $parent
-						})); // track nested includes
-						$(this).trigger(jQuery.Event("mr-include"));
-					});
+					if (template.length < 1) {
+						// text-only include
+						template = html;
+						$placeholder.replaceWith(template);
+						$parent.trigger(jQuery.Event("mr-include"));
+					} else {
+						// fullplate inlude with elements
+						$placeholder.replaceWith(template);
+						template.each(function () {
+							$(this).data("mr-include", jQuery.extend($(this).data("mr-include") || {}, {
+								parent: $parent
+							})); // track nested includes
+							$(this).trigger(jQuery.Event("mr-include"));
+						});
+					}
 				});
 			}
 		}
