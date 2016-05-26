@@ -11,7 +11,7 @@ Include for html. It is not full-blown include, which require to implement smth 
 
 Так как инклюды мы получаем по аякс, то все инициализации в "DOM Ready" идут к черту. Поэтому необходимо иметь свой include-ready - cкажем событие "mr-include-complete". И тогда каждую иницализацию нужно проводить два раза, один раз реальный - по dom ready, это будет работать на продакшне. А второй раз по mr-include-complete - это будет срабатывать на превьюхе вёрстки, когда она всё ещё содержит инклюды. Но нужно убедиться что не происходит инициализация два раза. Итого, обертка синтаксический сахар-обертка для инициализации того что раньше инициализировалось в dom ready:
 
-`mr-component/mr-component.js`
+`mr-component/mr-component.jquery.js`
 
 We get includes through ajax, so all "dom ready" initializations go to hell. So we need our own "include ready" event, to write initializations inside it. But now we have neccessity to write initializations twice - one for production version of code inside "dom ready", and one for development preview of you markup - inside "include-ready". Also check and abort initialization if already done it (relevant only in dev version). This is what currently mr.component.init is for - syntactic shugar of initialization aware of our includes.
 
