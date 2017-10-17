@@ -1,0 +1,25 @@
+{
+  "name": "mr-utils",
+  "version": "1.0.0",
+  "description": "HTML/CSS/JS utils",
+  "main": "mr.component.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antivitla/mr-utils.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "utils"
+  ],
+  "author": "Виталий Кулешин <antivitla@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antivitla/mr-utils/issues"
+  },
+  "homepage": "https://github.com/antivitla/mr-utils#readme"
+}
